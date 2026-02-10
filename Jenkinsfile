@@ -1,13 +1,17 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'alpine:latest'
+            args '-u root'
+        }
+    }
 
     stages {
-        stage('Docker test') {
+        stage('Docker Test') {
             steps {
-                sh '''
-                  docker run --rm alpine:latest \
-                  sh -c "echo Hello from Docker && uname -a"
-                '''
+                sh 'echo "Hello from Docker"'
+                sh 'uname -a'
+                sh 'cat /etc/os-release'
             }
         }
     }
