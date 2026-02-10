@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'alpine:latest'
-            args '-u root'   // avoids permission issues
+            args '-u root'
         }
     }
 
