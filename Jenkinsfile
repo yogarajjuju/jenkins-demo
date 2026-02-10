@@ -4,20 +4,26 @@ pipeline {
     stages {
         stage('Info') {
             steps {
-                sh 'echo "Running on Jenkins"'
-                sh 'uname -a'
+                sh '''
+                  echo "=== INFO STAGE ==="
+                  whoami
+                  pwd
+                  echo "Shell:"
+                  echo $SHELL
+                  uname -a
+                '''
             }
         }
 
         stage('Build') {
             steps {
-                sh 'echo "Build step"'
+                sh 'echo "=== BUILD STAGE DONE ==="'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'echo "Test step"'
+                sh 'echo "=== TEST STAGE DONE ==="'
             }
         }
     }
